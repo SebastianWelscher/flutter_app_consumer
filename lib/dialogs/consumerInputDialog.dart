@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_consumer/model/consumer.dart';
 import 'package:hive/hive.dart';
+import 'package:flutter_app_consumer/dialogs/widget/customTextFormField.dart';
 
 class ConsumerInputDialog extends StatelessWidget {
 
@@ -28,10 +29,11 @@ class ConsumerInputDialog extends StatelessWidget {
       titleTextStyle: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w500,
+        color: Colors.blue,
       ),
       children: [
         Container(
-          width: 400,
+          width: 600,
           child: Column(
             children: [
               Form(
@@ -39,50 +41,32 @@ class ConsumerInputDialog extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: TextFormField(
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.create),
-                                hintText: 'Name der Person',
-                                labelText: 'Name',
-                              ),
-                          keyboardType: TextInputType.text,
-                          onSaved: (String name){
+                    CustomTextFormField(
+                        icon: Icon(Icons.perm_identity_outlined),
+                        hintText: 'Name',
+                        labelText: 'Name',
+                        onSaved: (String name){
                           _name = name;
-                          }
-                        ),
-                    ),
+                        },
+                        keyboardType: TextInputType.text),
                     SizedBox(height: 20),
-                    Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: TextFormField(
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.create),
-                                hintText: 'Addresse',
-                                labelText: 'Addresse',
-                              ),
-                          keyboardType: TextInputType.text,
+                      CustomTextFormField(
+                          icon: Icon(Icons.home_outlined),
+                          hintText: 'Addresse',
+                          labelText: 'Adresse',
                           onSaved: (String address){
-                          _address = address;
-                          }
-                        ),
-                    ),
+                            _address = address;
+                          },
+                          keyboardType: TextInputType.text),
                     SizedBox(height: 20),
-                    Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: TextFormField(
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.confirmation_number_outlined),
-                                hintText: 'ID',
-                                labelText: 'ID',
-                              ),
-                          keyboardType: TextInputType.text,
-                          onSaved: (String customerID){
+                    CustomTextFormField(
+                        icon: Icon(Icons.confirmation_number_outlined),
+                        hintText: 'CustomerID',
+                        labelText: 'CustomerID',
+                        onSaved: (String customerID){
                           _customerID = customerID;
-                          }
-                        ),
-                    ),
+                        },
+                        keyboardType: TextInputType.text),
                     SizedBox(height: 20,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -90,7 +74,7 @@ class ConsumerInputDialog extends StatelessWidget {
                         RaisedButton(
                             child: Text('Zurück'),
                             onPressed: ()=> Navigator.pop(context),),
-                        SimpleDialogOption(
+                        OutlineButton(
                           child: Text('Hinzufügen'),
                           onPressed: _saveContact,
                         ),
@@ -106,4 +90,3 @@ class ConsumerInputDialog extends StatelessWidget {
     );
   }
 }
-
