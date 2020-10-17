@@ -24,6 +24,12 @@ class CustomTextFormField extends StatelessWidget {
             hintText: hintText,
             labelText: labelText,
           ),
+          validator: (value){
+            if(value.isEmpty){
+            return 'Bitte Daten eingeben';
+            }
+            return null;
+          },
           keyboardType: TextInputType.text,
           onSaved: onSaved,
       ),
