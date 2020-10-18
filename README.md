@@ -2,6 +2,8 @@
 
 A new Flutter application.
 
+This App uses Hive for storing data. #Todo: PDF output
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
