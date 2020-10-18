@@ -11,6 +11,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ConsumerAdapter());
   await Hive.openBox<Consumer>('consumer');
+  print('open Box');
   runApp(MyApp());
 }
 
@@ -48,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void dispose() async{
     Hive.box('consumer').compact();
     Hive.close();
+    print('dispose');
     super.dispose();
   }
 }

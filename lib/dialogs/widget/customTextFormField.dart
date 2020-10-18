@@ -5,14 +5,16 @@ class CustomTextFormField extends StatelessWidget {
   Icon icon;
   String hintText;
   String labelText;
+  String errorText;
 
   Function onSaved;
 
   TextInputType keyboardType;
 
   CustomTextFormField(
-       {@required this.icon, @required this.hintText, @required this.labelText,
-        @required this.onSaved, @required this.keyboardType});
+         {@required this.icon,@required this.hintText,
+          @required this.labelText,@required this.onSaved,
+          @required this.errorText, @required this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +28,11 @@ class CustomTextFormField extends StatelessWidget {
           ),
           validator: (value){
             if(value.isEmpty){
-            return 'Bitte Daten eingeben';
+            return errorText;
             }
             return null;
           },
-          keyboardType: TextInputType.text,
+          keyboardType: keyboardType,
           onSaved: onSaved,
       ),
     );

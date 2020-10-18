@@ -18,20 +18,29 @@ class ConsumerAdapter extends TypeAdapter<Consumer> {
     };
     return Consumer(
       name: fields[0] as String,
-      address: fields[1] as String,
-      customerID: fields[2] as String,
+      street: fields[1] as String,
+      number: fields[2] as String,
+      postalCode: fields[3] as String,
+      town: fields[4] as String,
+      customerID: fields[5] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Consumer obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
-      ..write(obj.address)
+      ..write(obj.street)
       ..writeByte(2)
+      ..write(obj.number)
+      ..writeByte(3)
+      ..write(obj.postalCode)
+      ..writeByte(4)
+      ..write(obj.town)
+      ..writeByte(5)
       ..write(obj.customerID);
   }
 
